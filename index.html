@@ -16,12 +16,16 @@
         fill: rgb(0, 0, 0);
         font-weight: lighter;
     }    
-    p li {
-      font-size: 14px;
+    p {
+      font-size: 13px;
+      text-align: justify;
+    }
+    li {
+      font-size: 13px;
       text-align: justify;
     }
     .bar:hover{
-          opacity: .8;
+          opacity: .6;
     }
     .td_especial {
         font-size: 12px;
@@ -140,7 +144,8 @@
                   var bars = chart.selectAll(".bar").data(myData);
                   bars.enter()
                     .append("rect")
-                    .attr("fill", "rgb(191, 209, 255)")
+                    //.attr("fill", "rgb(191, 209, 255)")
+                    .attr("fill", "steelblue")
                     .attr("class", "bar") // enter
                     .merge(bars) // enter + update
                     .attr("x", 0)
@@ -177,21 +182,21 @@
       </tr>
       <tr>
         <td colspan="2">
-          <p>Si usted es de aquellas personas que sufre con la din&aacutemica del clima del sitio de Colombia donde viven, si para usted es incomprensible como en las horas de la ma&ntildeana de un d&iacutea cualquiera puede tener un sol radiante y en las horas de la tarde sufrir un terrible aguacero, este estudio puede ayudarlo a determinar cu&aacutel es el departamento de Colombia donde existe menos inestabilidad en cuanto al nivel de lluvias registrado en los &uacuteltimos 30 a&ntildeos.</p>
-          <p>En la tabla y la imagen de la parte superior de la pantalla se puede identificar la temperatura y el nivel de las precipitaciones promedio por departamento obtenidas a partir de mediciones mensuales realizadas en los últimos 30 a&ntildeos en 450 municipios de nuestro país. La temperatura se mide en grados cent&iacutegrados y el nivel de precipitaciones pluvial en mm. Este &uacutetimo hace referencia al espesor de la l&aacutemina de agua que se formar&iacutea a causa de la precipitaci&oacuten registrada, sobre una superficie plana e impermeable y que equivale a litros de agua por metro cuadrado de terreno (l/m2).</p>
-          <p>Las siguiente conclusiones se pueden obtener f&aacutecilmente:
+          <p>Si usted es de aquellas personas que sufre con la din&aacutemica del clima del sitio de Colombia donde viven y no comprende como en las horas de la ma&ntildeana de un d&iacutea cualquiera podemos tener un sol radiante y en las horas de la tarde estar sufrir un terrible aguacero, este estudio puede ayudarlo a determinar cu&aacutel es el departamento de Colombia donde existe menos inestabilidad en cuanto al nivel de lluvias registrado en los &uacuteltimos 30 a&ntildeos.</p>
+          <p>En la imagen superior de la pantalla podr&aacute encontrar una tabla y una gr&aacutefica donde se puede identificar la temperatura y el nivel de las precipitaciones promedio por departamento obtenidas a partir de mediciones mensuales realizadas en los últimos 30 a&ntildeos en 450 municipios de nuestro país. La temperatura esta medida en grados cent&iacutegrados y el nivel de precipitaciones pluvial en mm. Este &uacutetimo indicador, el de las precipitaciones pluviales, hace referencia al espesor de la l&aacutemina de agua que se forma a causa de las lluvias registradas sobre una superficie plana e impermeable y que equivale a litros de agua por metro cuadrado de terreno (l/m2).</p>
+          <p>Por medio de la observación de esta informaci&oacuten se pueden obtener f&aacutecilmente las siguientes conclusiones:
             <ul type="circle">
-              <li>El departamento con la temperatura promedio m&aacutes alta de Colombia es el Cesar</li>
-              <li>El departamento con la temperatura promedio m&aacutes baja de Colombia es el Distrito Capital seguido de Boyaca</li>
-              <li>El departamento con el nivel de precipitaciones promedio mensual m&aacutes alto de Colombia es el Choco</li>
-              <li>El departamento con el nivel de precipitaciones promedio mensual m&aacutes bajo de Colombia es la Guajira</li>
+              <li>El departamento con la temperatura promedio por municipio m&aacutes alta de Colombia en los &uacuteltimos 30 a&ntildeos es el Cesar</li>
+              <li>El departamento con la temperatura promedio por municipio m&aacutes baja de Colombia en los &uacuteltimos 30 a&ntildeos es el Distrito Capital seguido de Boyac&aacute</li>
+              <li>El departamento con el promedio mensual de lluvias por municipio m&aacutes alta de Colombia en los &uacuteltimos 30 a&ntildeos es el Choc&oacute</li>
+              <li>El departamento con el promedio mensual de lluvias por municipio m&aacutes bajo de Colombia en los &uacuteltimos 30 a&ntildeos es La Guajira</li>
             </ul>
           </p>
         </td>
       </tr>
       <tr>
         <td align="center" width="50%">
-          <h6 align="center">Correlación entre la temperatura y el nivel de precipitaciones</h6>
+          <h6 align="center">Correlaci&oacuten entre la temperatura y el nivel de precipitaciones</h6>
           <div id="chart3">
             <script>
               d3.csv("data.csv", function(error, myData){
@@ -217,9 +222,10 @@
                               .attr("transform","translate("+ margin.left+","+margin.top+")")
                    ,xAxis = chart.append("g")
                                  .attr("class", "x axis")
-                                 .attr("transform","translate(0,"+(width-margin.top-margin.bottom)+")")
+                                 .attr("transform","translate(" + margin.left + ","+(width-margin.top-margin.bottom)+")")
                    ,yAxis = chart.append("g")
-                                 .attr("class", "y axis");
+                                 .attr("class", "y axis")
+                                 .attr("transform","translate(" + margin.left + ",0)");
                 
                 widthScale.domain([0, d3.max(myData, function (d) { return d.TemperaturaPromedioMensual; })]);                        
                 heightScale.domain([0, d3.max(myData, function (d) { return d.PrecipitacionPromedioMensual; })]);                       
@@ -238,9 +244,9 @@
 
                 chart.append("text")  
                      .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-                     .attr("x", 0)
+                     .attr("x", -100)
                      .attr("y",  0)
-                     //.attr("transform", "rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+                     .attr("transform", "rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
                      .text("Precipitaciones")
                      .style("font-size","10px");
 
@@ -256,27 +262,25 @@
           </div>
         </td>      
         <td valign="middle" width="50%">
-          <p>Ahora bien, con el &aacutenimo de contestar nuestra pregunta miremos si existe alguna correlaci&oacuten entre la temperatura no sostiene una fuerte correlaci&oacuten con el nivel de precipitaciones.
-          </p>
-          <p>No existe ninguna correlación fuerte entre la temperatura y el nivel de precipitaciones. La raz&oacuten de esto es que el nivel de precipitaciones depende no solamente de la temperatura de la zona sino tambi&eacuten de factores como:
+          <p>Ahora bien, con el &aacutenimo de contestar nuestra pregunta, calculamos el coeficiente de correlación entre la temperatura y el nivel de lluvias y comprobamos que no existe ninguna relaci&oacuten fuerte entre la temperatura y el nivel de precipitaciones promedio en los &uacuteltimos 30 a&ntildeos. El resultado arroja un coeficiente de correlaci&oacuten del 24.3%, lo cual es insuficiente para admitir una relací&oacuten entre estas variables. La raz&oacuten de este valor se cimenta en que el nivel de precipitaciones depende no solamente de la temperatura de la zona sino tambi&eacuten de factores como:
           </p>
           <ul type="center">
-            <li>La altitud (distancia de un punto respecto al nivel del mar).</li>
-            <li>La latitud (inclinaci&oacuten del eje terrestre y movimiento de traslaci&oacuten de la Tierra que influye en c&oacutemo llegan los rayos del Sol)</li>
+            <li>La altitud, es decir la distancia de un punto respecto al nivel del mar.</li>
+            <li>La latitud, es decir la inclinaci&oacuten del eje terrestre y movimiento de traslaci&oacuten de la Tierra que influye directamente en c&oacutemo llegan los rayos del Sol a una zona.</li>
           </ul>
         </td>        
       </tr>
       <tr>
         <td valign="middle" width="50%">
-          <p>El coeficiente de variaci&oacuten de los n&iacuteveles de precipitaci&oacuten muestra ciertas diferencias como se pueden ver en la gr&aacutefica de la derecha. Lo que nos quiere decir este indicador es que tan variable es el nivel de precipitaciones en los municipios que componen un departamento espec&iacutefico. 
-            A mayor &iacutendice mayor variaci&oacuten en los n&iacuteveles de precipitaci&oacuten de los municipios que componen el departamento. Al combinar esta informaci&oacuten con el nivel de precipitaciones promedio podemos configurar tres grupos de departamentos:
+          <p>Vamos un paso m&aacutes all&aacute calculando el coeficiente de variaci&oacuten de los n&iacuteveles de precipitaci&oacuten al interior de nuestros departamentos. Con este resultado ser&aacute posible determinar, que tan frecuentemente se encuentran situaciones en las que en municipios que pertenecen a un mismo departamento este lloviendo o no al mismo tiempo.  Los resultados se muestran gr&aacutefica de la derecha agrupados en tres franjas: aquellos que tienen una variaci&oacuten del nivel de lluvias alto en sus municipios, aquellos con una variaci&oacuten media y aquellos con una una variaci&oacuten baja.</p>
+          <p>Al combinar estos datos con la informací&oacuten de precipitaciones promedio podemos determinar cu&aacuteles son los departamentos con niveles de lluvias similares o diferentes en todos sus municpios, de acuerdo al porcentaje de variabilidad de &eacutestas. 
           </p>
           <br>
           <table align="center" style="padding: 1px 4px; text-align: center;"">
             <tr>
               <td></td>
               <td></td>
-              <th class="td_header" colspan="3">Nivel de <br>precipitaci&oacuten <br>(Que tan lluvioso es el departamento?)</th>
+              <th class="td_header" colspan="3">Nivel de precipitaci&oacuten <br>(¿Qu&eacute tanto llueve?)</th>
             </tr>
             <tr>
               <td></td>
@@ -289,65 +293,65 @@
               <th class="td_header" rowspan="4">Uniformidad en el nivel<br>de precipitaciones<br>(Que tan estable?)</th>
               <th class="td_header">Alta</th>
               <td class="td_especial">
-                 <table>
-                    <tr>Guain&iacutea</tr>
-                    <tr>Vichada</tr>
-                    <tr>Casanare</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">Guain&iacutea</td></tr>
+                    <tr><td class="td_especial">Vichada</td></tr>
+                    <tr><td class="td_especial">Casanare</td></tr>
                  </table>
               </td>
               <td class="td_especial">
-                 <table>
-                    <tr>Arauca</tr>
-                    <tr>San Andr&eacutes Providencia y Sta C</tr>
-                    <tr>Bol&iacutevar</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">Arauca</td></tr>
+                    <tr><td class="td_especial">San Andr&eacutes Providencia y Sta C</td></tr>
+                    <tr><td class="td_especial">Bol&iacutevar</td></tr>
                  </table>
               </td>
               <td class="td_especial">
-                 <table>
-                    <tr>La Guajira</tr>
-                    <tr>Atl&aacutentico</tr>
-                    <tr>Cesar</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">La Guajira</td></tr>
+                    <tr><td class="td_especial">Atl&aacutentico</td></tr>
+                    <tr><td class="td_especial">Cesar</td></tr>
                  </table>
               </td>
             </tr>
             <tr>
               <th class="td_header">Media</th>
               <td class="td_especial">
-                 <table>
-                    <tr>Caquet&aacute</tr>
-                    <tr>Meta</tr>
-                    <tr>Guaviare</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">Caquet&aacute</td></tr>
+                    <tr><td class="td_especial">Meta</td></tr>
+                    <tr><td class="td_especial">Guaviare</td></tr>
                  </table>
               </td>
               <td class="td_especial">
-                 <table>
-                    <tr>Quind&iacuteoe</tr>
-                    <tr>Santander</tr>
-                    <tr>Tolima</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">Quind&iacuteo</td></tr>
+                    <tr><td class="td_especial">Santander</td></tr>
+                    <tr><td class="td_especial">Tolima</td></tr>
                  </table>
               </td>
               <td class="td_especial">
-                 <table>
-                    <tr>Bogot&aacute D.C.</tr>
-                    <tr>Huila</tr>
-                    <tr>Boyac&aacute</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">Bogot&aacute D.C.</td></tr>
+                    <tr><td class="td_especial">Huila</td></tr>
+                    <tr><td class="td_especial">Boyac&aacute</td></tr>
                  </table>
               </td>
             </tr>
             <tr>
               <th class="td_header">Baja</th>
               <td class="td_especial">
-                 <table>
-                    <tr>Choc&oacute</tr>
-                    <tr>Amazonas</tr>
-                    <tr>Putumayo</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">Choc&oacute</td></tr>
+                    <tr><td class="td_especial">Amazonas</td></tr>
+                    <tr><td class="td_especial">Putumayo</td></tr>
                  </table>
               </td>
               <td class="td_especial">
-                 <table>
-                    <tr>Valle del Cauca</tr>
-                    <tr>Cauca</tr>
-                    <tr>Nari&ntildeo</tr>
+                 <table align="center">
+                    <tr><td class="td_especial">Valle del Cauca</td></tr>
+                    <tr><td class="td_especial">Cauca</td></tr>
+                    <tr><td class="td_especial">Nari&ntildeo</td></tr>
                  </table>
               </td>
               <td class="td_especial">No existe</td>
@@ -355,8 +359,8 @@
           </table>
         </td>
         <td align="center" width="50%">
-          <h6 align="center">Coeficiente de variación del nivel de precipitaciones al interior de los departamentos</h6>
-          <div id="chart4">
+          <h6 align="center">Coeficiente de variación del nivel de precipitaciones por departamentos</h6>
+            <div id="chart4">
             <script>
               d3.csv("data.csv", function(error, myData){
                 if (error) throw error;
@@ -372,7 +376,7 @@
                 var width = 600
                    ,height = 400
                    ,barH = 20
-                   ,margin = {top: 30, right: 20, bottom: 150, left: 40}
+                   ,margin = {top: 30, right: 20, bottom: 180, left: 40}
                    ,widthScale = d3.scaleBand().rangeRound([0, width - margin.left - margin.right]).padding(0.1)
                    ,heightScale = d3.scaleLinear().rangeRound([height - margin.top - margin.bottom, 0])
                    ,chart = d3.select("#chart4")
@@ -385,8 +389,9 @@
                                  .attr("class", "x axis")
                                  .attr("transform","translate(0,"+(height-margin.top-margin.bottom)+")")                      
                    ,yAxis = chart.append("g")
-                                 .attr("class", "y axis");
-
+                                 .attr("class", "y axis")
+                   ,labels = ["Bajo", "Medio", "Alto"]
+                   ,color = ["steelblue", "orangered", "orange"];
                   
                 widthScale.domain(myData.map(function(d) { return d.Departamento; }));
                 heightScale.domain([0, d3.max(myData, function(d) { return d.PrecipitacionCoeficienteVariacion; })]);
@@ -403,7 +408,16 @@
                 var bars = chart.selectAll(".bar").data(myData);
                 bars.enter()
                     .append("rect")
-                    .attr("fill", "rgb(191, 209, 255)")
+                    //.attr("fill", "rgb(191, 209, 255)")
+                    .attr("fill", function(d) {
+                                    if (d.PrecipitacionCoeficienteVariacion < 30) {
+                                      return color[0];
+                                    } else if(d.PrecipitacionCoeficienteVariacion < 53) {
+                                      return color[1];
+                                    } else {
+                                      return color[2];
+                                    }
+                                  })                    
                     .attr("class", "bar") // enter
                     .merge(bars) // enter + update
                     .attr("x", function(d) { return widthScale(d.Departamento);})
@@ -426,9 +440,29 @@
                       .attr("y", function (d)  { return heightScale(d.PrecipitacionCoeficienteVariacion) - barH; })
                       .text(function(d){ return d.PrecipitacionCoeficienteVariacion; })
                       .attr("text-anchor", "middle");
-                }); 
+
+                var legend = chart.selectAll(".legend").data(labels);
+                legend.enter()
+                      .append("rect")
+                      .attr("width", 20)
+                      .attr("height", 20)
+                      .attr("fill", function (d, i) { return color[i]; })
+                      .transition()
+                      .duration(2000)
+                      .attr("y", function (d, i) { return i * 20; })
+                      .attr("x", 30);
+                legend.enter()
+                      .append("text")
+                      .attr("class", "value")
+                      .transition()
+                      .duration(2000)
+                      .attr("y", function (d, i) { return i * 20 + 15; })
+                      .attr("x", 60)
+                      .attr("text-anchor", "start")
+                      .text(function (d, i) { return labels[i]; });
+              }); 
             </script>
-          </div>        
+          </div>   
         </td>
       </tr>
     </table>
