@@ -268,45 +268,94 @@
       </tr>
       <tr>
         <td valign="middle" width="50%">
-          <p>El coeficiente de variaci&oacuten de los n&iacuteveles de precipitaci&oacuten muestra ciertas diferencias como se pueden ver en la gr&aacutefica de la derecha. Lo que nos quiere decir este indicador es que tan variable es el nivel de precipitaciones de un departamento espec&iacutefico. Al combinar esta informaci&oacuten con el nivel de precipitaciones promedio podemos configurar tres grupos en funci&oacuten de la siguiente forma:
+          <p>El coeficiente de variaci&oacuten de los n&iacuteveles de precipitaci&oacuten muestra ciertas diferencias como se pueden ver en la gr&aacutefica de la derecha. Lo que nos quiere decir este indicador es que tan variable es el nivel de precipitaciones en los municipios que componen un departamento espec&iacutefico. 
+            A mayor &iacutendice mayor variaci&oacuten en los n&iacuteveles de precipitaci&oacuten de los municipios que componen el departamento. Al combinar esta informaci&oacuten con el nivel de precipitaciones promedio podemos configurar tres grupos de departamentos:
           </p>
           <br>
           <table align="center" style="padding: 1px 4px; text-align: center;"">
             <tr>
               <td></td>
               <td></td>
-              <th class="td_header" colspan="3">Nivel de <br>precipitaci&oacuten <br>(Que tan lluvioso?)</th>
+              <th class="td_header" colspan="3">Nivel de <br>precipitaci&oacuten <br>(Que tan lluvioso es el departamento?)</th>
             </tr>
             <tr>
               <td></td>
               <td></td>
+              <th class="td_header">Alto</th>
+              <th class="td_header">Medio</th>
+              <th class="td_header">Bajo</th>
+            </tr>
+            <tr>
+              <th class="td_header" rowspan="4">Uniformidad en el nivel<br>de precipitaciones<br>(Que tan estable?)</th>
               <th class="td_header">Alta</th>
+              <td class="td_especial">
+                 <table>
+                    <tr>Guain&iacutea</tr>
+                    <tr>Vichada</tr>
+                    <tr>Casanare</tr>
+                 </table>
+              </td>
+              <td class="td_especial">
+                 <table>
+                    <tr>Arauca</tr>
+                    <tr>San Andr&eacutes Providencia y Sta C</tr>
+                    <tr>Bol&iacutevar</tr>
+                 </table>
+              </td>
+              <td class="td_especial">
+                 <table>
+                    <tr>La Guajira</tr>
+                    <tr>Atl&aacutentico</tr>
+                    <tr>Cesar</tr>
+                 </table>
+              </td>
+            </tr>
+            <tr>
               <th class="td_header">Media</th>
+              <td class="td_especial">
+                 <table>
+                    <tr>Caquet&aacute</tr>
+                    <tr>Meta</tr>
+                    <tr>Guaviare</tr>
+                 </table>
+              </td>
+              <td class="td_especial">
+                 <table>
+                    <tr>Quind&iacuteoe</tr>
+                    <tr>Santander</tr>
+                    <tr>Tolima</tr>
+                 </table>
+              </td>
+              <td class="td_especial">
+                 <table>
+                    <tr>Bogot&aacute D.C.</tr>
+                    <tr>Huila</tr>
+                    <tr>Boyac&aacute</tr>
+                 </table>
+              </td>
+            </tr>
+            <tr>
               <th class="td_header">Baja</th>
-            </tr>
-            <tr>
-              <th class="td_header" rowspan="4">Coeficiente de<br>Variaci&oacuten <br>(Que tan estable?)</th>
-              <th class="td_header">Alta</th>
-              <td class="td_especial">Guain&iacutea</td>
-              <td class="td_especial">Arauca</td>
-              <td class="td_especial">La Guajira</td>
-            </tr>
-            <tr>
-              <th class="td_header">Media</th>
-              <td class="td_especial">Caquet&aacute</td>
-              <td class="td_especial">Quind&iacuteo</td>
-              <td class="td_especial">Huila</td>
-            </tr>
-            <tr>
-              <th class="td_header">Baja</th>
-              <td class="td_especial">Choc&oacute</td>
-              <td class="td_especial">Valle del Cauca</td>
-              <td class="td_especial">Bogot&aacute D.C.</td>
+              <td class="td_especial">
+                 <table>
+                    <tr>Choc&oacute</tr>
+                    <tr>Amazonas</tr>
+                    <tr>Putumayo</tr>
+                 </table>
+              </td>
+              <td class="td_especial">
+                 <table>
+                    <tr>Valle del Cauca</tr>
+                    <tr>Cauca</tr>
+                    <tr>Nari&ntildeo</tr>
+                 </table>
+              </td>
+              <td class="td_especial">No existe</td>
             </tr>
           </table>
         </td>
         <td align="center" width="50%">
-          <h6 align="center">Coeficiente de variación del nivel de precipitaciones por departamentos</h6>
+          <h6 align="center">Coeficiente de variación del nivel de precipitaciones al interior de los departamentos</h6>
           <div id="chart4">
             <script>
               d3.csv("data.csv", function(error, myData){
